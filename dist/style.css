@@ -1,3 +1,6 @@
-.hello .goodbye {
+.hello {
   color: red; }
+  .hello .goodbye {
+    height: 20px;
+    background: blue; }
 

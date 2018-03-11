@@ -12,8 +12,16 @@ module.exports = {
   },
   module: {
     rules: [
+      /* CSS only--no splitting out
       {
-        test: /\.(s*)css$/,
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      } */
+      {
+        test: /\.(s*)css$/, // Test for CSS or Sass
         /*use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: ['css-loader', 'sass-loader']
@@ -21,6 +29,13 @@ module.exports = {
         use:
           [ MiniCssExtractPlugin.loader,
         'css-loader', 'sass-loader']
+      },
+      {
+        // Image files
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader'
+        ]
       }
     ]
   },
