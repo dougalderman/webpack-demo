@@ -2,12 +2,16 @@ const path = require('path');
 // Not compatible with webpack 4
 // const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    app: './src/index.js',
+    print: './src/print.js'
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
@@ -46,8 +50,12 @@ module.exports = {
     new ExtractTextPlugin({
       filename: 'style.css'
     }) */
+    new CleanWebpackPlugin(['dist']),
     new MiniCssExtractPlugin({
       filename: 'style.css'
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Output Management'
     })
   ]
 };
