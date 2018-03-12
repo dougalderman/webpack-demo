@@ -12,7 +12,8 @@ module.exports = {
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -57,5 +58,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Output Management'
     })
-  ]
+  ],
+  // following for development only
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './dist'
+  }
 };
