@@ -1,7 +1,12 @@
 const path = require('path');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
 // Not compatible with webpack 4
 // const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+// No HMR support yet
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
@@ -69,7 +74,8 @@ module.exports = {
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new UglifyJSPlugin()
   ],
   // following for development only
   devtool: 'inline-source-map',
