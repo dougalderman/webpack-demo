@@ -4,6 +4,13 @@ import PassIcon from './pass.png'
 import printMe from './print.js';
 import { cube } from './math.js';
 
+if (process.env.NODE_ENV === 'production') {
+  console.log('We\'re in production mode');
+}
+else {
+  console.log('We\'re in development mode');
+}
+
 function component() {
   let element = document.createElement('div');
   let btn = document.createElement('button');

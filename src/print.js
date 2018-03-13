@@ -1,3 +1,3 @@
 export default function printMe() {
-  console.log('This is printMe');
+  console.log('printMe output');
 }
