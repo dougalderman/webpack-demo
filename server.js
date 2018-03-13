@@ -3,8 +3,6 @@ const node_env = process.env.NODE_ENV;
 const port = process.env.PORT;
 
 const express = require('express');
-const expressSession = require('express-session');
-
 const app = express();
 
 console.log('node_env: ', node_env);
@@ -22,14 +20,10 @@ if (node_env !== 'production') {
   app.use(webpackHotMiddleware(compiler));
 }
 else {
-  var app_dir = process.env.APP_DIR;
-  console.log('app_dir = ' + app_dir);
-  app.use(express.static(__dirname + app_dir));
-  app.use(expressSession({
-    secret: process.env.SECRET,
-    saveUninitialized: false,
-    resave: false
-  }));
+  let app_dir = process.env.APP_DIR;
+  let path = __dirname + app_dir;
+  console.log('path = ' + path);
+  app.use(express.static(path));
 }
 
 app.listen(port, function () {
